@@ -1,0 +1,34 @@
+{
+  "name": "express-auth",
+  "version": "1.0.0",
+  "description": "Express Auth app with sqlite, passport",
+  "main": "./bin/www.js",
+  "scripts": {
+    "start": "node ./bin/www.js",
+    "dev": "nodemon"
+  },
+  "author": {
+    "name": "Iv",
+    "surname": "Li"
+  },
+  "license": "ISC",
+  "keywords": [
+    "express",
+    "auth",
+    "passport",
+    "sqlite"
+  ],
+  "dependencies": {
+    "connect-sqlite3": "^0.9.13",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1",
+    "passport": "^0.7.0",
+    "pluralize": "^8.0.0",
+    "sqlite3": "^5.1.6"
+  }
+}
