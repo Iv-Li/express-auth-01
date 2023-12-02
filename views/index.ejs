@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweety App</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<section class="todoapp">
+    <nav class="nav">
+        <ul>
+            <li class="user"> <%= user.name || user.username || user.email %></li>
+            <li>
+                <form action="/logout" method="post">
+                    <button class="logout" type="'submit">Sign out</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <header class="header">
+        <h1>Sweety App</h1>
+        <form action="/" method="post">
+            <input class="new-todo" name="title" placeholder="Add an exercise activity here" autofocus>
+        </form>
+    </header>
+<footer class="info">
+    <p>Click to edit activities</p>
+    <p>Authentication powered by <a href="https://www.passportjs.org">Passport</a></p>
+    <hr>
+</body>
+</html>
