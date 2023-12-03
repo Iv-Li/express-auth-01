@@ -3,7 +3,7 @@ const router = express.Router()
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 
-const { login, singIn, logout } = require('../controllers/auth')
+const { login, renderSignUp, signUp, logout } = require('../controllers/auth')
 const { verify, serializeUser, deserializeUser } = require('../middleware/passportStrategy')
 
 passport.use(new LocalStrategy(verify))
@@ -15,7 +15,8 @@ router.post('/login/password', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login'
 }))
-router.get('/signIn', singIn)
+router.get('/signup', renderSignUp)
+router.post('/signup', signUp)
 router.get('/logout', logout)
 
 module.exports = router
