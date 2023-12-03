@@ -7,6 +7,8 @@ const app = express()
 
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
+const passport = require('passport')
+
 
 const indexRouter = require('./routes/index')
 const authRouter = require('./routes/auth')
@@ -22,13 +24,20 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
+
 app.use(session({
   secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: false,
-  store: new SQLiteStore({ db: 'sessionStorage.db', dir: path.resolve(__dirname, 'db')})
+  store: new SQLiteStore({ db: 'sessionStorage.db', dir: path.resolve(__dirname, 'db')}),
+  cookie: {
+    maxAge: 60 * 60 * 1000
+  }
 }))
 app.use(connectSession)
+app.use(passport.initialize())
+app.use(passport.session({}))
+//or app.use(authenticate('session')) instead of initialize() and session()
 
 app.use('/', indexRouter)
 app.use('/', authRouter)

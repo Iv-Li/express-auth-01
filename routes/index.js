@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const authUser = require('../middleware/authUser')
+const index = require('../controllers/index')
 
 const user = {
   name: 'Iv',
@@ -7,12 +9,8 @@ const user = {
   email: 'iv@gmail.com'
 }
 
-router.get('/', (req, res) => {
-  res.render('home')
-})
+router.get('/', authUser, index)
 
-router.get('/index', (req, res) => {
-  res.render('index', { user })
-})
+router.get('/index', index)
 
 module.exports = router
